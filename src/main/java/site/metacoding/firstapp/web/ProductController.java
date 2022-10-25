@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import lombok.AllArgsConstructor;
 import site.metacoding.firstapp.domain.Product;
@@ -25,6 +26,13 @@ public class ProductController {
 		return "product/list"; 
 	}
 	
+	// 상품상세보기 - findById
+	@GetMapping("/product/{productId}")
+		public String productDetail(@PathVariable Integer productId, Model model) {
+		Product productPS = productDao.findById(productId);
+		model.addAttribute("product", productPS);
+		return "product/detail";
+	}
 	
 	
 // ========== 포스트맨 테스트 완료 -> 참고해서 만들어보자! ==================
