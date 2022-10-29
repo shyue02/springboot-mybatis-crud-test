@@ -13,14 +13,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="product" items="${product}">
+			<c:forEach var="productlist" items="${product}">
 				<tr>
-					<td>${product.productName}</td>
-					<td>${product.productPrice}</td>
-					<td>${product.productQty}</td>
+					<td>${productlist.productName}</td>
+					<td>${productlist.productPrice}</td>
+					<td>${productlist.productQty}</td>
 					<td>
 						<ul class="navbar-nav">
-							<li class="nav-item"><a class="nav-link" href="/product/{productId}">상세보기</a></li>
+							<li class="nav-item"><a href="/product/${productlist.productId}">상세보기</a></li>
 						</ul>
 					</td>
 				</tr>

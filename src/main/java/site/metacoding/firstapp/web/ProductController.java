@@ -19,7 +19,7 @@ public class ProductController {
 	private final ProductDao productDao;
 
 	// 상품목록보기 - findAll
-	@GetMapping("/product")
+	@GetMapping({"/product", "/"})
 	public String productList(Model model) {
 		List<Product> getList = productDao.findAll();
 		model.addAttribute("product", getList);
@@ -29,8 +29,9 @@ public class ProductController {
 	// 상품상세보기 - findById
 	@GetMapping("/product/{productId}")
 	public String productDetail(@PathVariable Integer productId, Model model) {
-		Product productPS = productDao.findById(productId);
-		model.addAttribute("product", productPS);
+//		Product productPS = productDao.findById(productId);
+//		model.addAttribute("product", productPS);
+		model.addAttribute("detail", productDao.findById(productId));
 		return "product/detail";
 	}
 
@@ -43,27 +44,24 @@ public class ProductController {
 	@PostMapping("/product/add")
 	public String productInsert(Product product) {
 		productDao.insert(product);
-		return "product/list";
+		return "redirect:/";
 	}
 
-  //상품 삭제하기 - deleteById
-  @PostMapping("/product/{productId}/delete")
-  public void delete(@PathVariable Integer productId) {
-  	productDao.deleteById(productId);
-  }
-	
 	// 상품 수정 페이지로 이동
 	@GetMapping("/product/{productId}/edit")
-	public String updateForm() {
+	public String updateForm(@PathVariable Integer productId, Product product, Model model) {
+		model.addAttribute("edit", productDao.findById(productId));
 		return "product/edit";
 	}
 	//상품수정하기 - update
 	@PostMapping("/product/{productId}/edit")
-	public void update(Product product) {
+	public String update(@PathVariable Integer productId, Product product) {
+		Product productPS = productDao.findById(productId);
+		productDao.update(productPS);
 		productDao.update(product);
+		return "redirect:/";
 	}
-	
-	
+
 
 // ========== 포스트맨 테스트 완료 -> 참고해서 만들어보자! ==================
 

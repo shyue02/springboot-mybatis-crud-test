@@ -14,14 +14,14 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>${product.productName}</td>
-				<td>${product.productPrice}</td>
-				<td>${product.productQty}</td>
+				<td>${detail.productName}</td>
+				<td>${detail.productPrice}</td>
+				<td>${detail.productQty}</td>
 			</tr>
 		</tbody>
 	</table>
 	<div class="d-flex">
-		<a href="/product/${productId}/edit" class="btn btn-warning">상품수정</a>
+		<a href="/product/${detail.productId}/edit" class="btn btn-warning">상품수정</a>
 		<form>
 			<button id="btnDelete" type="button"  class="btn btn-danger">상품삭제</button>
 		</form>
