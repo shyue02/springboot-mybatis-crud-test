@@ -22,8 +22,8 @@
 	</table>
 	<div class="d-flex">
 		<a href="/product/${detail.productId}/edit" class="btn btn-warning">상품수정</a>
-		<form>
-			<button id="btnDelete" type="button"  class="btn btn-danger">상품삭제</button>
+		<form action="/product/${detail.productId}/delete" method="post">
+			<button id="btnDelete" type="submit"  class="btn btn-danger">상품삭제</button>
 		</form>
 	</div>
 </div>

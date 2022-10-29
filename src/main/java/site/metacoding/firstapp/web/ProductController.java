@@ -61,6 +61,15 @@ public class ProductController {
 		productDao.update(product);
 		return "redirect:/";
 	}
+	
+	//상품삭제하기 - deleteById
+	@PostMapping("/product/{productId}/delete")
+	public String delete(@PathVariable Integer productId) {
+		productDao.deleteById(productId);
+		return "redirect:/";
+	}
+	
+	
 
 
 // ========== 포스트맨 테스트 완료 -> 참고해서 만들어보자! ==================
