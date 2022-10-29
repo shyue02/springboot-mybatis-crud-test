@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>상품목록보기</title>
-</head>
-<body>
-	<table border="1"  align="center">
-	<caption>상품 목록 페이지</caption>
+<%@ include file="../layout/header.jsp"%>
+
+<div class="container">
+	<h3>상품 목록 페이지</h3>
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>상품명</th>
@@ -18,14 +13,20 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="product"  items="${product}">
+			<c:forEach var="product" items="${product}">
 				<tr>
 					<td>${product.productName}</td>
 					<td>${product.productPrice}</td>
-					<td>${product.productPrice}</td>
+					<td>${product.productQty}</td>
+					<td>
+						<ul class="navbar-nav">
+							<li class="nav-item"><a class="nav-link" href="/product/{productId}">상세보기</a></li>
+						</ul>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-</body>
-</html>
+</div>
+
+<%@ include file="../layout/footer.jsp"%>
