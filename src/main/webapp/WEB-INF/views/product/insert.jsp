@@ -15,11 +15,11 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><input id="Name"  name ="productName"  type="text" class="form-control"
+					<td><input id="name"  name ="productName"  type="text" class="form-control"
 						placeholder="상품명을 입력하세요"></td>
-					<td><input id="Price"  name ="productPrice"  type="text" class="form-control"
+					<td><input id="price"  name ="productPrice"  type="text" class="form-control"
 						placeholder="가격을 입력하세요"></td>
-					<td><input id="Qty"  name ="productQty"  type="text" class="form-control"
+					<td><input id="qty"  name ="productQty"  type="text" class="form-control"
 						placeholder="수량을 입력하세요"></td>
 				</tr>
 			</tbody>

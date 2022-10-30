@@ -16,11 +16,11 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><input id="Name" name="productName" type="text"
+					<td><input id="name" name="productName" type="text"
 						class="form-control" value="${edit.productName}"></td>
-					<td><input id="Price" name="productPrice" type="text"
+					<td><input id="price" name="productPrice" type="text"
 						class="form-control" value="${edit.productPrice}"></td>
-					<td><input id="Qty" name="productQty" type="text"
+					<td><input id="qty" name="productQty" type="text"
 						class="form-control" value="${edit.productQty}"></td>
 				</tr>
 			</tbody>
