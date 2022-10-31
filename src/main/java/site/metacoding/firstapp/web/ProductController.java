@@ -7,17 +7,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
 import site.metacoding.firstapp.domain.Product;
 import site.metacoding.firstapp.domain.ProductDao;
+import site.metacoding.firstapp.service.ProductService;
+import site.metacoding.firstapp.web.dto.CMRespDto;
 
 @AllArgsConstructor
 @Controller
 public class ProductController {
 
 	private final ProductDao productDao;
-
+	private final ProductService productService;
+	
 	// 상품목록보기 - findAll
 	@GetMapping({"/product", "/"})
 	public String productList(Model model) {
@@ -35,11 +40,21 @@ public class ProductController {
 		return "product/detail";
 	}
 
+	
 	// 상품 등록 페이지로 이동
 	@GetMapping("/product/add")
 	public String insertForm() {
 		return "product/insert";
 	}
+	
+	@GetMapping("/api/product/productNameSameCheck")
+	public @ResponseBody CMRespDto<Boolean> productNameSameCheck(String productName) {
+		boolean isSame = productService.상품명중복확인(productName);
+		System.out.println(productName);
+		return new CMRespDto<>(1, "성공", isSame);
+	}
+	
+	
 	// 상품등록하기 - insert
 	@PostMapping("/product/add")
 	public String productInsert(Product product) {
@@ -47,20 +62,32 @@ public class ProductController {
 		return "redirect:/";
 	}
 
+	
+	
 	// 상품 수정 페이지로 이동
 	@GetMapping("/product/{productId}/edit")
 	public String updateForm(@PathVariable Integer productId, Product product, Model model) {
 		model.addAttribute("edit", productDao.findById(productId));
 		return "product/edit";
 	}
+	
 	//상품수정하기 - update
 	@PostMapping("/product/{productId}/edit")
 	public String update(@PathVariable Integer productId, Product product) {
+		//1.영속화
 		Product productPS = productDao.findById(productId);
+		//2.영속화 된 객체 변경
+		productPS.update(product);
+		//3.디비수행
 		productDao.update(productPS);
-		productDao.update(product);
+
+
+		//productDao.update(product);	// 1~3. 코드 대신 이 한 줄로 써도 된다
+
 		return "redirect:/";
 	}
+	
+	
 	
 	//상품삭제하기 - deleteById
 	@PostMapping("/product/{productId}/delete")

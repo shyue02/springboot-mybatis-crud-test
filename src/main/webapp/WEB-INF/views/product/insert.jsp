@@ -4,7 +4,7 @@
 
 <div class="container">
 	<h3>상품 등록 페이지</h3>
-	<form action ="/product/add" method="post">
+	<form>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -15,19 +15,22 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><input id="name"  name ="productName"  type="text" class="form-control"
-						placeholder="상품명을 입력하세요"></td>
-					<td><input id="price"  name ="productPrice"  type="text" class="form-control"
-						placeholder="가격을 입력하세요"></td>
-					<td><input id="qty"  name ="productQty"  type="text" class="form-control"
-						placeholder="수량을 입력하세요"></td>
+					<td><input id="name" type="text"
+						class="form-control" placeholder="상품명을 입력하세요"></td>
+					<td><input id="price" type="text"
+						class="form-control" placeholder="가격을 입력하세요"></td>
+					<td><input id="qty" type="text"
+						class="form-control" placeholder="수량을 입력하세요"></td>
 				</tr>
 			</tbody>
 		</table>
 		<div align="center">
-			<button id="btnInsert" type="submit" class="btn btn-primary">상품등록완료</button>
+			<button id="btnProductSameCheck" type="button"
+				class="btn btn-warning">상품명 중복 확인</button>
+			<button id="btnInsert" type="button" class="btn btn-primary">상품등록완료</button>
 		</div>
 	</form>
 </div>
 
+<script src="/js/insert.js"></script>
 <%@ include file="../layout/footer.jsp"%>
