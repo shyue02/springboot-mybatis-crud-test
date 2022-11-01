@@ -1,15 +1,52 @@
 let isproductNameSameCheck = false;
 
+// 상품등록
+$("#btnInsert").click(() => {
+	insertProduct();
+});
+
 $("#btnProductSameCheck").click(() => {
 	checkProductName();
 });// 리스너
 
 
+
+function insertProduct() {
+	if (isproductNameSameCheck == false) {
+		alert("상품명 중복 확인을 해주세요");
+		return;
+	}
+
+	let data = {
+		productName: $("#name").val(),
+		productPrice: $("#price").val(),
+		productQty: $("#qty").val()
+	};
+
+	$.ajax("/product/add", {
+		type: "POST",
+		dataType: "json",
+		data: JSON.stringify(data),	//http body에 들고 갈 요청 데이터
+		headers: { //http header에 들고 갈 요청 데이터
+			"Content-Type": "application/json"	//json 타입 content type 날릴거임
+		}
+	}).done((res) => {
+		if (res.code == 1) {
+			location.href = "/product";
+		} else {
+			alert("상품명을 확인해주세요");
+			history.back();
+		}
+	});
+}
+
+
+// 상품명 중복 확인
 function checkProductName() {
 	let productName = $("#name").val();
-	
 
-	$.ajax("/api/product/productNameSameCheck?productName="+productName, {
+
+	$.ajax("/api/product/productNameSameCheck?productName=" + productName, {
 		type: "GET",
 		dataType: "json",
 		async: true
