@@ -1,19 +1,27 @@
 let isproductNameSameCheck = false;
+let isproductNameCheckEvent = true;
 
 // 상품등록
 $("#btnInsert").click(() => {
 	insertProduct();
 });
 
+// 상품명 중복 확인
 $("#btnProductSameCheck").click(() => {
 	checkProductName();
 });// 리스너
 
 
 
+// 상품등록
 function insertProduct() {
 	if (isproductNameSameCheck == false) {
 		alert("상품명 중복 확인을 해주세요");
+		return;
+	}
+	
+	if (isproductNameCheckEvent != $("#name").val()) {
+		alert("상품명 중복 확인을 다시 해주세요!");
 		return;
 	}
 
@@ -55,6 +63,7 @@ function checkProductName() {
 			if (res.data == false) {
 				alert("상품명이 중복되지 않았습니다.");
 				isproductNameSameCheck = true;
+				isproductNameCheckEvent = $("#name").val();
 			} else {
 				alert("상품명이 중복되었어요. 다른 상품명을 입력하세요.");
 				isproductNameSameCheck = false;

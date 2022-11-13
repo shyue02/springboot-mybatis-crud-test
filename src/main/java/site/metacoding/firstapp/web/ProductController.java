@@ -79,9 +79,6 @@ public class ProductController {
 		//3.디비수행
 		productDao.update(productPS);
 
-
-		//productDao.update(product);	// 1~3. 코드 대신 이 한 줄로 써도 된다
-
 		return "redirect:/";
 	}
 	
@@ -93,42 +90,5 @@ public class ProductController {
 		productDao.deleteById(productId);
 		return "redirect:/";
 	}
-	
-	
-
-
-// ========== 포스트맨 테스트 완료 -> 참고해서 만들어보자! ==================
-
-//    // 상품목록보기 - findAll	
-//    @GetMapping("/product")
-//    public List<Product> ProductList(){
-//    	return productDao.findAll();
-//    }
-//    
-
-//    //상품 상세보기 - findById
-//    @GetMapping("/product/{productId}")
-//    public Product detail(@PathVariable Integer productId) {
-//    	return productDao.findById(productId);
-//    }
-//    
-//    //상품 등록 - insert
-//    @PostMapping("/product/add")
-//    public void insert(Product product) {
-//    	productDao.insert(product);
-//    }
-//    
-//   
-//    //상품 삭제하기 - deleteById
-//    @PostMapping("/product/{productId}/delete")
-//    public void delete(@PathVariable Integer productId) {
-//    	productDao.deleteById(productId);
-//    }
-//    
-//    //상품 수정하기 - update
-//    @PostMapping("/product/{productId}/edit")
-//    public void update(Product product) {
-//    	productDao.update(product);
-//    }
 
 }
