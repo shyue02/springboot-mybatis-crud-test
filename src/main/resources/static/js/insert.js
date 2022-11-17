@@ -9,7 +9,7 @@ $("#btnInsert").click(() => {
 // 상품명 중복 확인
 $("#btnProductSameCheck").click(() => {
 	checkProductName();
-});// 리스너
+});
 
 
 

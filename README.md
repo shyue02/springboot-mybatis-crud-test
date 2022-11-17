@@ -15,6 +15,7 @@
 
 ## 3. 고급 기능
 - 상품 등록시 동일한 상품명 못들어가게 하기
+- 값 변경 감지하기 (이벤트)
 
 ### 4. 테이블 생성
 ```sql
@@ -25,6 +26,7 @@ create table product(
     product_qty INT NOT null,
     created_at TIMESTAMP NOT null
 );
+
 ```
 
 ### 5. 더미데이터
